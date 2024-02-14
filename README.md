@@ -1,3 +1,3 @@
-# Reservation Plugin WP
+# RM Reservation WP
 
-## Under construction
+## Plugin for vehicle reservations
