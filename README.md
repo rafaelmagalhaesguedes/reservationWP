@@ -1,3 +1,3 @@
-# Reservation Plugin for WordPress
+# Reservation Plugin WP
 
 ## Under construction
