@@ -1,0 +1,396 @@
+/* Import font google poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+
+    span {
+        font-size: 1rem;
+    }
+}
+
+.link {
+    color: #555;
+    text-decoration: none;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin: 30px 0;
+}
+
+.timeline-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    position: relative;
+    height: 50px;
+    width: 80%;
+}
+
+.timeline-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 19px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #ddd;
+    z-index: 1;
+}
+
+.step {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background: #ddd;
+    border-radius: 50%;
+    z-index: 2;
+    position: relative;
+    font-size: 0.8em;
+    margin-top: 10px;
+}
+
+.step a {
+    position: absolute;
+    width: 100px;
+    left: 50%;
+    top: 30px;
+    transform: translateX(-50%);
+    margin: 0;
+}
+
+.step.active {
+    background: #007bff;
+    color: #004ADD;
+}
+
+.container-form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 1rem;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.resumo-final {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    border-radius: 5px;
+    border: 1px solid #e4e4e4;
+    margin-right: 30px;
+}
+
+.form-4 {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.title {
+    margin-top: 3rem;
+    padding: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.form-4 input {
+  margin-bottom: 1rem;
+}
+
+.form-4 label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.button-user-form {
+    width: 100%;
+    height: 40px;
+    background-color: #023e8a;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .container-form {
+        flex-direction: column-reverse;
+    }
+
+    .resumo-final {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .title {
+        font-size: 1.2rem;
+    }
+}
+
+/* ASIDE */
+
+.asideForm {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
+}
+
+.title-geral {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color:#023e8a;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    color: white;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.resumo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.descricao-categoria {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+.subtitulo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #023e8a;
+    border-radius: 4px;
+}
+
+.titulo-detalhe {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #007bff;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.descricao {
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.items-adicionados {
+    line-height: 2rem;
+}
+
+.divider {
+    width: 90%;
+    height: 1px;
+    background-color: #e4e4e4;
+    margin: 20px 0;
+}
+
+.valor-total {
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.form-4 {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.info-pre-autorizacao {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid #eeeeee;
+    padding: 10px;
+}
+
+.info-pre-autorizacao span {
+    font-size: 1rem;
+    padding: 10px;
+    font-weight: bold;
+    color: #0077b6;
+    background-color: #eeeeee;
+    margin-bottom: 10px;
+}
+
+.info-pre-autorizacao p {
+    font-size: 0.8rem;
+    color: #444;
+    padding: 0 5px;
+}
+
+.input-box-form-name {
+    display: flex;
+    flex-flow: column wrap;
+    width: 50%;
+}
+
+.input-box-form-lastname {
+    display: flex;
+    flex-flow: column wrap;
+    width: 48%;
+}
+
+.input-box-form-email {
+    display: flex;
+    flex-flow: column wrap;
+    width: 50%;
+}
+
+.input-box-form-cpf {
+    display: flex;
+    flex-flow: column wrap;
+    width: 50%;
+}
+
+.input-box-form-data-nasc {
+    display: flex;
+    flex-flow: column wrap;
+    width: 48%;
+}
+
+.input-box-form-cnh {
+    display: flex;
+    flex-flow: column wrap;
+    width: 50%;
+}
+
+.input-box-form-validade-cnh {
+    display: flex;
+    flex-flow: column wrap;
+    width: 48%;
+}
+
+.input-box-form-telefone {
+    display: flex;
+    flex-flow: column wrap;
+    width: 48%;
+}
+
+.text-form {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #444;
+    margin-top: 20px;
+}
+
+.text-form-2 {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #444;
+}
+
+.total-previsto {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #444;
+    margin-top: 10px;
+    background-color: #eeeeee;
+    padding: 10px 20px;
+}
+
+.total-price {
+    font-size: 1.9rem;
+    font-weight: bold;
+    color: #004ADD;
+    margin-top: 10px;
+}
+
+.info-payment {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #444;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .asideForm {
+        width: 100%;
+    }
+
+    .title-geral {
+        font-size: 1.2rem;
+    }
+
+    .resumo {
+        width: 100%;
+    }
+
+    .form-4 {
+        flex-direction: column;
+    }
+
+    .input-box-form-name {
+        width: 100%;
+    }
+
+    .input-box-form-lastname {
+        width: 100%;
+    }
+
+    .input-box-form-email {
+        width: 100%;
+    }
+
+    .input-box-form-cpf {
+        width: 100%;
+    }
+
+    .input-box-form-data-nasc {
+        width: 100%;
+    }
+
+    .input-box-form-cnh {
+        width: 100%;
+    }
+
+    .input-box-form-validade-cnh {
+        width: 100%;
+    }
+
+    .input-box-form-telefone {
+        width: 100%;
+    }
+
+    .info-pre-autorizacao {
+        width: 100%;
+    }
+}

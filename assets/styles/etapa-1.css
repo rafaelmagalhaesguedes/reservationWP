@@ -1,0 +1,288 @@
+/* Import font google poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.container-etapa-1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper-etapa-1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+.wrapper-form-etapa-1 {
+    width: 1140px;
+    display: flex;
+    justify-content: center;
+    align-items: last baseline;
+    color: white;
+    background-color: #004AAD;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.reservas-online {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.card-form-etapa-1 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: end;
+    gap: 20px;
+}
+
+.icon-location {
+    position: absolute;
+    padding: 13px 11px;
+}
+
+.select-location {
+    width: 320px;
+    height: 43px;
+    padding: 9px 0 9px 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #555;
+    outline: none;
+    font-weight: 400;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    padding-right: 30px; 
+}
+
+/* Create a wrapper for the select box */
+.select-wrapper {
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #004AAD;
+}
+
+option {
+    font-weight: 600;
+    padding: 0px 2px;
+    display: block;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+    white-space: nowrap;
+}
+
+.input-date-time {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+}
+
+.time {
+    width: 90px;
+    height: 43px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: white;
+    color: #555;
+    font-size: 0.9rem;
+
+    &:focus {
+        outline: none;
+        border: none;
+    }
+}
+
+.date-retirada {
+    width: 180px;
+    height: 45px;
+    padding: 9px 0 9px 10px;
+    outline: none;
+    background-color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #555;
+    outline: none;
+    font-weight: 400;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 10px; 
+
+}
+
+.form-etapa-1 {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+
+.button-continue-form-1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: rgb(144, 231, 13);
+    color: blue;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    margin: 0 10px 0 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.error-message {
+    display: none;
+    background-color: #004AAD;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    z-index: 9999;
+}
+
+.error-message::after {
+    content: "";
+    position: relative;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #004AAD transparent transparent transparent;
+}
+
+@media only screen and (max-width: 768px) {
+    .wrapper-etapa-1 {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .wrapper-form-etapa-1 {
+        width: 100%;
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
+
+    .reservas-online {
+        padding: 0;
+    }
+
+    .form-etapa-1 {
+        width: 100%;
+    }
+
+    input, select {
+        width: 100%;
+        transition: 0.3s;
+    }
+
+    .card-form-etapa-1 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .select-wrapper {
+        width: 100%;
+    }
+
+    .input-local-retirada {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .input-date-time {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .data_hora {
+        width: 100%;
+    }
+
+    .date-retirada {
+        width: 100%;
+    }
+
+    .select-location {
+        width: 100%;
+    }
+
+    .button-continue-form-1 {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .wrapper-etapa-1 {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        width: 100%;
+    }
+
+    input, select {
+        width: 100%;
+        transition: 0.3s;
+    }
+
+    .card-form-etapa-1 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .input-local-retirada {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .input-date-time {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .select-location {
+        width: 100%;
+    }
+
+    .button-continue-form-1 {
+        width: 100%;
+    }
+}
