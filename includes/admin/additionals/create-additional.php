@@ -52,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         color: white;
         border: none;
         align-self: flex-end;
+        cursor: pointer;
     }
 
     @media (max-width: 768px) {
