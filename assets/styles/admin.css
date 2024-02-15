@@ -6,6 +6,11 @@
     height: 100vh;
 }
 
+h2 {
+    margin-bottom: 20px;
+    background-color: #45a049;
+}
+
 .form-user {
     display: flex;
     flex-direction: column;
@@ -42,6 +47,15 @@
     background-color: #45a049;
 }
 
+.add-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #0073aa;
+    color: white;
+    text-decoration: none;
+}
 
 /* EDIT Categoria */
 
