@@ -9,12 +9,12 @@ function reserva_veiculos_activation()
 {
     // Dados dos veículos
     $vehicles = array(
-        array('image' => '../../assets/images/grupo-a.png', 'cars' => 'Kwid, Uno, Mobi ou similar', 'category' => 'Grupo A - Compacto', 'price' => 100.55),
-        array('image' => '../../assets/images/grupo-b.png', 'cars' => 'Argo, Onix, HB20 ou similar', 'category' => 'Grupo B - Hatch', 'price' => 120.55),
-        array('image' => '../../assets/images/grupo-c.png', 'cars' => 'Cronos, Onix plus, HB20s ou similar', 'category' => 'Grupo C - Sedan', 'price' => 180.55),
-        array('image' => '../../assets/images/grupo-d.png', 'cars' => 'Renegade, Duster, Creta ou similar', 'category' => 'Grupo D - SUV', 'price' => 200.55),
-        array('image' => '../../assets/images/grupo-e.png', 'cars' => 'Chevrolet Spin ou Fiat Doblò', 'category' => 'Grupo E - Mini Van', 'price' => 300.55),
-        array('image' => '../../assets/images/grupo-f.png', 'cars' => 'S10, Ranger, Hillux ou similar', 'category' => 'Grupo F - 4x4', 'price' => 400.55),
+        array('image' => '../assets/images/grupo-a.png', 'cars' => 'Kwid, Uno, Mobi ou similar', 'category' => 'Grupo A - Compacto', 'price' => 100.55),
+        array('image' => '../assets/images/grupo-b.png', 'cars' => 'Argo, Onix, HB20 ou similar', 'category' => 'Grupo B - Hatch', 'price' => 120.55),
+        array('image' => '../assets/images/grupo-c.png', 'cars' => 'Cronos, Onix plus, HB20s ou similar', 'category' => 'Grupo C - Sedan', 'price' => 180.55),
+        array('image' => '../assets/images/grupo-d.png', 'cars' => 'Renegade, Duster, Creta ou similar', 'category' => 'Grupo D - SUV', 'price' => 200.55),
+        array('image' => '../assets/images/grupo-e.png', 'cars' => 'Chevrolet Spin ou Fiat Doblò', 'category' => 'Grupo E - Mini Van', 'price' => 300.55),
+        array('image' => '../assets/images/grupo-f.png', 'cars' => 'S10, Ranger, Hillux ou similar', 'category' => 'Grupo F - 4x4', 'price' => 400.55),
     );
 
     // Dados dos adicionais
