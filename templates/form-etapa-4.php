@@ -1,7 +1,7 @@
 <?php
-require_once(plugin_dir_path(__FILE__) . '../../includes/helpers/format_date.php');
-require_once(plugin_dir_path(__FILE__) . '../../includes/helpers/format_days.php');
-require_once(plugin_dir_path(__FILE__) . '../../includes/helpers/format_values.php');
+require_once(plugin_dir_path(__FILE__) . '../includes/helpers/format_date.php');
+require_once(plugin_dir_path(__FILE__) . '../includes/helpers/format_days.php');
+require_once(plugin_dir_path(__FILE__) . '../includes/helpers/format_values.php');
 
 // Obter dados salvos das etapas anteriores
 $data_etapa_1 = get_option('reserva_veiculos_data_etapa_1');
