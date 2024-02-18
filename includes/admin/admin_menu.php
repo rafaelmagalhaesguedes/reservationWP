@@ -5,6 +5,7 @@ if (!defined('ABSPATH')) {
 
 include 'categories/read-categories.php';
 include 'additionals/read-additionals.php';
+include 'date_blocking/index.php';
 include 'utils/display_table.php';
 
 // Adicione ao menu principal de configurações
@@ -39,6 +40,16 @@ function reserva_veiculos_admin_menu()
         'manage_options', // capacidade necessária
         'reserva_veiculos_adicionais_page', // unique page identifier
         'reserva_veiculos_adicionais_page' 
+    );
+
+    // Menu de subpágina para configurações de bloqueio de datas
+    add_submenu_page(
+        'reserva_veiculos_admin_page', // menu pai (Águia Locadora)
+        'Configurações de Bloqueio', // título da página
+        'Configurações de Bloqueio', // nome no menu
+        'manage_options', // capacidade necessária
+        'reserva_veiculos_date_blocking_page', // unique page identifier
+        'reserva_veiculos_date_blocking_page' 
     );
 }
 add_action('admin_menu', 'reserva_veiculos_admin_menu');
