@@ -32,7 +32,18 @@ function display_table($data, $headers, $edit_page, ...$fields) {
     foreach ($data as $index => $item) {
         echo '<tr>';
         foreach ($fields as $field) {
-            echo '<td>' . esc_html($item[$field]) . '</td>';
+            // Check if the field is a date field
+            if ($field === 'start_date' || $field === 'end_date') {
+                // Format the date ex: 1 de janeiro de 2024
+                $date = DateTime::createFromFormat('Y-m-d', $item[$field]);
+                if ($date !== false) {
+                    echo '<td>' . $date->format('d') . ' de ' . $date->format('F') . ' de ' . $date->format('Y') . '</td>';
+                } else {
+                    echo '<td>Not valid</td>'; // Empty cell if date is not valid
+                }
+            } else {
+                echo '<td>' . esc_html($item[$field]) . '</td>';
+            }
         }
         echo '<td><a href="?page=' . $edit_page . '&action=edit&index=' . $index . '"><span class="dashicons dashicons-edit"></span></a></td>';
         echo '<td><a href="?page=' . $edit_page . '&action=delete&index=' . $index . '" onclick="return confirm(\'Deseja remover definitivamente?\')"><span class="dashicons dashicons-trash"></span></a></td>';
