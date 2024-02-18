@@ -43,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['etapa_1_submit'])) {
                     </div>
                         
                     <div class="data_hora">
+                            <label>Data de Retirada</label>
                         <div class="input-date-time">
                             <input type="date" class="date-retirada" name="data_retirada" id="data_retirada" required />
                             <select class="time" name="hora_retirada" id="hora_retirada" required></select>
@@ -50,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['etapa_1_submit'])) {
                     </div>
                         
                     <div class="data_hora">
+                            <label>Data de Devolução</label>
                         <div class="input-date-time">
                             <input type="date" class="date-retirada" name="data_devolucao" id="data_devolucao" required />
                             <select class="time" name="hora_devolucao" id="hora_devolucao" required></select>
@@ -85,19 +87,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['etapa_1_submit'])) {
 
 <script>
     document.querySelector('.form-etapa-1').addEventListener('submit', function(event) {
-        const dataRetirada = document.getElementById('data_retirada').value;
-        const dataDevolucao = document.getElementById('data_devolucao').value;
+        const dataRetirada = new Date(document.getElementById('data_retirada').value);
+        const dataDevolucao = new Date(document.getElementById('data_devolucao').value);
 
         let dataAtual = new Date();
         dataAtual.setHours(0, 0, 0, 0);
 
-        if (new Date(dataRetirada) < dataAtual) {
+        // Bloquear o mês de dezembro
+        const inicioBloqueio = new Date(dataRetirada.getFullYear(), 11, 1); // 1 de dezembro
+        const fimBloqueio = new Date(dataRetirada.getFullYear(), 11, 31); // 31 de dezembro
+
+        if (dataRetirada < dataAtual) {
             document.getElementById('data_retirada_error').textContent = 'A data de retirada não pode ser menor que a data atual.';
             document.getElementById('data_retirada_error').style.display = 'block';
             event.preventDefault();
-        } else if (new Date(dataDevolucao) < new Date(dataRetirada)) {
+        } else if (dataDevolucao < dataRetirada) {
             document.getElementById('data_devolucao_error').textContent = 'A data de devolução não pode ser menor que a data de retirada.';
             document.getElementById('data_devolucao_error').style.display = 'block';
+            event.preventDefault();
+        } else if ((dataRetirada >= inicioBloqueio && dataRetirada <= fimBloqueio) || (dataDevolucao >= inicioBloqueio && dataDevolucao <= fimBloqueio)) {
+            // Se a data de retirada ou devolução estiver dentro do intervalo bloqueado, redirecionar para outra página
+            window.location.href = '/atendimento-via-hatsapp';
             event.preventDefault();
         }
     });
