@@ -42,9 +42,14 @@
     .container-edit-date {
         display: flex;
         flex-direction: column;
-        align-items: center;
     }
     
+    .back {
+        margin: 10px 0;
+        border-radius: 5px;
+        color: #222;
+    }
+
     .add-link {
         display: inline-block;
         margin: 20px 0;
@@ -75,7 +80,7 @@
     }
 
     input[type="submit"] {
-        width: 100px;
+        width: 50%;
         padding: 10px;
         border-radius: 5px;
         background-color: #0073aa;
@@ -94,6 +99,8 @@
 
 <div class="container-edit-date">
     <h2>Editar período</h2>
+
+    <a href="<?php echo admin_url('admin.php?page=reserva_veiculos_date_blocking_page'); ?>" class="back">Voltar</a>
 
     <form method="post">
         <label for="start_date">Data inicial:</label>
