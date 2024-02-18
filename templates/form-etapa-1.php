@@ -19,6 +19,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['etapa_1_submit'])) {
 }
 ?>
 
+<?php
+    $blocked_dates = get_option('reserva_veiculos_data_block_dates', array());
+
+    for ($i = 0; $i < count($blocked_dates); $i++) {
+        $start_date = DateTime::createFromFormat('d/m/Y', $blocked_dates[$i]['start_date']);
+        $end_date = DateTime::createFromFormat('d/m/Y', $blocked_dates[$i]['end_date']);
+    }
+?>
+
 <div class="container-etapa-1">
     <div class="wrapper-etapa-1">
         <form class="form-etapa-1" method="post" action="">
@@ -93,21 +102,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['etapa_1_submit'])) {
         let dataAtual = new Date();
         dataAtual.setHours(0, 0, 0, 0);
 
-        // Bloquear o mês de dezembro
-        const inicioBloqueio = new Date(dataRetirada.getFullYear(), 11, 1); // 1 de dezembro
-        const fimBloqueio = new Date(dataRetirada.getFullYear(), 11, 31); // 31 de dezembro
+        // Bloqueio de datas
+        let blockedDates = <?php echo json_encode($blocked_dates); ?>;
+        let inicioBloqueio = new Date();
+        let fimBloqueio = new Date();
+
+        for (let i = 0; i < blockedDates.length; i++) {
+            inicioBloqueio = new Date(blockedDates[i].start_date);
+            fimBloqueio = new Date(blockedDates[i].end_date);
+            if ((dataRetirada >= inicioBloqueio && dataRetirada <= fimBloqueio) || (dataDevolucao >= inicioBloqueio && dataDevolucao <= fimBloqueio)) {
+                // Se a data de retirada ou devolução estiver dentro do intervalo bloqueado, redirecionar para outra página
+                window.location.href = '/atendimento-via-hatsapp';
+                event.preventDefault();
+            } 
+        }
 
         if (dataRetirada < dataAtual) {
             document.getElementById('data_retirada_error').textContent = 'A data de retirada não pode ser menor que a data atual.';
             document.getElementById('data_retirada_error').style.display = 'block';
             event.preventDefault();
-        } else if (dataDevolucao < dataRetirada) {
+        }
+        if (dataDevolucao < dataRetirada) {
             document.getElementById('data_devolucao_error').textContent = 'A data de devolução não pode ser menor que a data de retirada.';
             document.getElementById('data_devolucao_error').style.display = 'block';
-            event.preventDefault();
-        } else if ((dataRetirada >= inicioBloqueio && dataRetirada <= fimBloqueio) || (dataDevolucao >= inicioBloqueio && dataDevolucao <= fimBloqueio)) {
-            // Se a data de retirada ou devolução estiver dentro do intervalo bloqueado, redirecionar para outra página
-            window.location.href = '/atendimento-via-hatsapp';
             event.preventDefault();
         }
     });
