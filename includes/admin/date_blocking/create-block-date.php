@@ -19,14 +19,75 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<h2>Bloquear novo período</h2>
+<style>
+    .container-create-date {
+        display: flex;
+        flex-direction: column;
+    }
 
-<form method="post">
-    <label for="start_date">Data inicial:</label>
-    <input type="date" id="start_date" name="start_date" required>
+    .back {
+        margin: 10px 0;
+        border-radius: 5px;
+        color: #222;
+    }
 
-    <label for="end_date">Data final:</label>
-    <input type="date" id="end_date" name="end_date" required>
+    .add-link {
+        display: inline-block;
+        margin: 10px 0;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: #0073aa;
+        color: white;
+        text-decoration: none;
+    }
+    
+    h2 {
+        border-bottom: 1px solid #ccc;
+        width: 50%;
+    }
 
-    <input type="submit" value="Bloquear período">
-</form>
+    form {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-top: 5px;
+    }
+
+    input[type="date"] {
+        margin-bottom: 20px;
+    }
+
+    input[type="submit"] {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #0073aa;
+        color: white;
+        cursor: pointer;
+        width: 50%;
+        align-self: end;
+    }
+
+    @media (max-width: 768px) {
+        form {
+            width: 95%;
+        }
+    }
+</style>
+
+<div class="container-create-date">
+    <h2>Bloquear Período</h2>
+    <a href="<?php echo admin_url('admin.php?page=reserva_veiculos_date_blocking_page'); ?>" class="back">Voltar</a>
+    <form method="post">
+        <label for="start_date">Data inicial:</label>
+        <input type="date" id="start_date" name="start_date" required>
+
+        <label for="end_date">Data final:</label>
+        <input type="date" id="end_date" name="end_date" required>
+
+        <input type="submit" value="Bloquear período">
+    </form>
+</div>
