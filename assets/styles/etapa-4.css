@@ -80,6 +80,16 @@
     color: #004ADD;
 }
 
+.title {
+    margin-top: 3rem;
+    padding: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
 .container-form {
   display: flex;
   flex-direction: row;
@@ -98,24 +108,24 @@
     margin-right: 30px;
 }
 
+.title-mobile {
+    display: none;
+}
+
 .form-4 {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  margin-top: 1rem;
 }
 
-.title {
-    margin-top: 3rem;
-    padding: 0;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: black;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-}
+.form-4 input, textarea {
+  margin-bottom: 2rem;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
 
-.form-4 input {
-  margin-bottom: 1rem;
+  outline: none;
 }
 
 .form-4 label {
@@ -125,20 +135,97 @@
     margin-bottom: 5px;
 }
 
-.button-user-form {
+.button-submit {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button-user-form {
+    width: 30%;
     height: 40px;
     background-color: #023e8a;
     color: white;
     font-size: 1rem;
-    font-weight: bold;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-.title-mobile {
-    display: none;
+.input-box-form-name {
+    display: flex;
+    flex-flow: column wrap;
+    width: 50%;
+}
+
+.input-box-form-lastname {
+    display: flex;
+    flex-flow: column wrap;
+    width: 48%;
+}
+
+.input-box-form-email {
+    display: flex;
+    flex-flow: column wrap;
+    width: 50%;
+}
+
+.input-box-form-cpf {
+    display: flex;
+    flex-flow: column wrap;
+    width: 50%;
+}
+
+.input-box-form-telefone {
+    display: flex;
+    flex-flow: column wrap;
+    width: 48%;
+}
+
+.input-box-form-observacao {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+}
+
+.box-infos {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 20px 0;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 0 2rem;
+}
+
+.box-infos ul {
+    padding: 20px;
+    list-style-type:square;
+}
+
+.box-infos ul li {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.text-form {
+    width: 100%;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #313131;
+    text-align: justify;
+}
+
+.text-form-2 {
+    width: 100%;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #444;
+    margin-top: 1rem;
+    text-align: justify;
 }
 
 @media (max-width: 768px) {
@@ -165,6 +252,15 @@
         color: black;
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
+    }
+
+    .button-user-form {
+        width: 100%;
+    }
+
+    .box-infos {
+        padding: 0 1rem;
+        text-align: justify;
     }
 }
 
@@ -270,67 +366,6 @@
     font-size: 0.8rem;
     color: #444;
     padding: 0 5px;
-}
-
-.input-box-form-name {
-    display: flex;
-    flex-flow: column wrap;
-    width: 50%;
-}
-
-.input-box-form-lastname {
-    display: flex;
-    flex-flow: column wrap;
-    width: 48%;
-}
-
-.input-box-form-email {
-    display: flex;
-    flex-flow: column wrap;
-    width: 50%;
-}
-
-.input-box-form-cpf {
-    display: flex;
-    flex-flow: column wrap;
-    width: 50%;
-}
-
-.input-box-form-data-nasc {
-    display: flex;
-    flex-flow: column wrap;
-    width: 48%;
-}
-
-.input-box-form-cnh {
-    display: flex;
-    flex-flow: column wrap;
-    width: 50%;
-}
-
-.input-box-form-validade-cnh {
-    display: flex;
-    flex-flow: column wrap;
-    width: 48%;
-}
-
-.input-box-form-telefone {
-    display: flex;
-    flex-flow: column wrap;
-    width: 48%;
-}
-
-.text-form {
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: #444;
-    margin-top: 20px;
-}
-
-.text-form-2 {
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: #444;
 }
 
 .total-previsto {
@@ -456,6 +491,7 @@
     font-weight: bold;
     border-radius: 10px;
     width: 50%;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {

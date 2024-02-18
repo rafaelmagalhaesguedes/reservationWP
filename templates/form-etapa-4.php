@@ -43,6 +43,11 @@ if (isset($_POST['finalizar_submit'])) {
     $cpf = sanitize_text_field($_POST['cliente_cpf']);
     $email = sanitize_text_field($_POST['cliente_email']);
     $telefone = sanitize_text_field($_POST['cliente_telefone']);
+    $observacao = sanitize_text_field($_POST['observacao']);
+
+    if ($observacao === '') {
+        $observacao = '';
+    }
 
     // Obter os dados do formulário
     $dados_condutor = array(
@@ -51,6 +56,7 @@ if (isset($_POST['finalizar_submit'])) {
         'cpf' => $cpf,
         'email' => $email,
         'telefone' => $telefone,
+        'observacao' => $observacao,
     );
 
     // Salvar os dados do formulário
@@ -66,6 +72,9 @@ if (isset($_POST['finalizar_submit'])) {
     $mensagem .= "CPF: " . $cpf . "\n";
     $mensagem .= "E-mail: " . $email . "\n";
     $mensagem .= "Telefone: " . $telefone . "\n";
+    if ($observacao !== '') {
+        $mensagem .= "Observações: " . $observacao . "\n";
+    }
             
     $mensagem .= "\nDados da reserva\n\n";
     $mensagem .= "Retirada: " . format_date($data_etapa_1['data_retirada']) . " às " . $data_etapa_1['hora_retirada'] . "\n";
@@ -135,9 +144,22 @@ if (isset($_POST['finalizar_submit'])) {
                 <input type="text" id="cliente_cpf" name="cliente_cpf" required>
             </div>
 
-            <button class="button-user-form" name="finalizar_submit" id="finalizar_submit">Finalizar</button>
-            <span class="text-form">* Ao finalizar sua reserva, os dados serão encaminhados para um de nossos atendentes via whatsapp e um <strong>voucher</strong> enviado ao seu email.</span>
-            <span class="text-form-2">* O pagamento da reserva será realizado no momento da retirada do veículo.</span>
+            <div class="input-box-form-observacao">
+                <label for="observacao">Observações</label>
+                <textarea id="observacao" name="observacao" rows="6"></textarea>
+            </div>
+
+            <div class="button-submit">
+                <button class="button-user-form" name="finalizar_submit" id="finalizar_submit">Finalizar Reserva</button>
+            </div>
+            <div class="box-infos">
+                <ul>
+                    <li><span class="text-form">Ao finalizar sua reserva, os dados serão encaminhados para um de nossos atendentes via whatsapp e um <strong>voucher</strong> enviado ao seu email.</span></li>
+                    <li><span class="text-form-2">O pagamento da reserva será realizado no momento da retirada do veículo.</span></li>
+                    <li><span class="text-form-2">Sua reserva garante um dos modelos de carro do grupo escolhido, estando sujeito à disponibilidade da locadora.</span></li>
+                    <li><span class="text-form-2">A pré-autorização é uma transação de reserva (caução) realizada no seu cartão de crédito físico, nominal, no momento da retirada do veículo. Se não houver débitos pendentes ao final da locação, solicitamos o desbloqueio do valor.</span></li>
+                </ul>
+            </div>
         </form>
     </section>
 
@@ -205,15 +227,14 @@ if (isset($_POST['finalizar_submit'])) {
                         if ($item_data['price'] > 0) {
                             if ($item_nome == 'limpeza_garantida') {
                                 echo '<span class="items-adicionados">- Limpeza Garantida: R$ ', $item_data['price'], '</span><br>';
-                            }
-                            if ($item_nome == 'cadeira_de_bebe') {
+                            } else if ($item_nome == 'cadeira_de_bebe') {
                                 echo '<span class="items-adicionados">- Cadeira de Bebê: R$ ', $item_data['price'], ' / dia (x', $item_data['quantity'], ')</span><br>';
-                            }
-                            if ($item_nome == 'bebe_conforto') {
+                            } else if ($item_nome == 'bebe_conforto') {
                                 echo '<span class="items-adicionados">- Bebê Conforto: R$ ', $item_data['price'], ' / dia (x', $item_data['quantity'], ')</span><br>';
-                            }
-                            if ($item_nome == 'assento_de_elevacao') {
+                            } else if ($item_nome == 'assento_de_elevacao') {
                                 echo '<span class="items-adicionados">- Assento de Elevação: R$ ', $item_data['price'], ' / dia (x', $item_data['quantity'], ')</span><br>';
+                            } else {
+                                echo '<span class="items-adicionados">- ', $item_nome, ': R$ ', $item_data['price'], ' / dia (x', $item_data['quantity'], ')</span><br>';
                             }
                         }
                     }
@@ -237,7 +258,7 @@ if (isset($_POST['finalizar_submit'])) {
         </div>
         <div class="info-pre-autorizacao">
             <span>Pré-autorização no cartão</span>
-            <p>O valor da pré-autorização varia conforme a proteção contratada. Faça sua reserva com proteção do carro e garanta o valor reduzido.</p>
+            <p>A pré-autorização é uma transação de reserva (caução) realizada no seu cartão de crédito físico, nominal, no momento da retirada do veículo. Se não houver débitos pendentes ao final da locação, solicitamos o desbloqueio do valor.</p>
         </div>
     </aside>
 </div>
