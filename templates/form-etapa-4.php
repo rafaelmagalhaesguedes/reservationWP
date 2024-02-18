@@ -31,31 +31,41 @@ foreach ($data_etapa_3 as $item_nome => $item_data) {
 // Calcular o valor total previsto
 $preco_total = $selected_vehicle['price'] * $quantidade_dias + $valor_itens_adicionados;
 
+// Format the total price with 2 decimal places
+$preco_total_formatado = number_format($preco_total, 2, '.', '');
+
 // Verificar se o formulário foi enviado
 if (isset($_POST['finalizar_submit'])) {
 
+    // Adicione validações e sanitizações conforme necessário
+    $nome = sanitize_text_field($_POST['cliente_nome']);
+    $sobrenome = sanitize_text_field($_POST['cliente_sobrenome']);
+    $cpf = sanitize_text_field($_POST['cliente_cpf']);
+    $email = sanitize_text_field($_POST['cliente_email']);
+    $telefone = sanitize_text_field($_POST['cliente_telefone']);
+
     // Obter os dados do formulário
     $dados_condutor = array(
-        'nome' => sanitize_text_field($_POST['cliente_nome']),
-        'sobrenome' => sanitize_text_field($_POST['cliente_sobrenome']),
-        'cpf' => sanitize_text_field($_POST['cliente_cpf']),
-        'email' => sanitize_text_field($_POST['cliente_email']),
-        'telefone' => sanitize_text_field($_POST['cliente_telefone'])
+        'nome' => $nome,
+        'sobrenome' => $sobrenome,
+        'cpf' => $cpf,
+        'email' => $email,
+        'telefone' => $telefone,
     );
 
     // Salvar os dados do formulário
     update_option('reserva_veiculos_data_etapa_4', $dados_condutor);
 
     // Montar a mensagem
-    $mensagem = "Olá, " . $dados_condutor['nome'] . "\n\n";
+    $mensagem = "Olá, " . $nome . "\n\n";
     $mensagem .= "Segue abaixo os dados da sua reserva\n\n";
 
     $mensagem .= "Dados do titular\n\n";
-    $mensagem .= "Nome: " . $dados_condutor['nome'] . "\n";
-    $mensagem .= "Sobrenome: " . $dados_condutor['sobrenome'] . "\n";
-    $mensagem .= "CPF: " . $dados_condutor['cpf'] . "\n";
-    $mensagem .= "E-mail: " . $dados_condutor['email'] . "\n";
-    $mensagem .= "Telefone: " . $dados_condutor['telefone'] . "\n";
+    $mensagem .= "Nome: " . $nome . "\n";
+    $mensagem .= "Sobrenome: " . $sobrenome . "\n";
+    $mensagem .= "CPF: " . $cpf . "\n";
+    $mensagem .= "E-mail: " . $email . "\n";
+    $mensagem .= "Telefone: " . $telefone . "\n";
             
     $mensagem .= "\nDados da reserva\n\n";
     $mensagem .= "Retirada: " . format_date($data_etapa_1['data_retirada']) . " às " . $data_etapa_1['hora_retirada'] . "\n";
@@ -72,7 +82,7 @@ if (isset($_POST['finalizar_submit'])) {
     }
 
     $mensagem .= "\nQTotal de diárias: " . calcular_quantidade_dias($data_etapa_1['data_retirada'], $data_etapa_1['data_devolucao']) . "\n";
-    $mensagem .= "\nTotal previsto: R$ " . $preco_total . "\n";
+    $mensagem .= "\nTotal previsto: R$ " . $preco_total_formatado . "\n";
     $mensagem = urlencode($mensagem);
 
     // Redirecionar para a URL do WhatsApp
@@ -95,37 +105,39 @@ if (isset($_POST['finalizar_submit'])) {
 </div>
 
 <h2 class="title">Responsável pela reserva</h2>
+
 <div class="container-form">
     <section class="resumo-final">
+        <h2 class="title-mobile">Responsável pela reserva</h2>
         <form class="form-4" method="post" action="">
             <div class="input-box-form-name">
                 <label for="cliente_nome">Nome</label>
-                <input type="text" name="cliente_nome" required>
+                <input type="text" id="cliente_nome" name="cliente_nome" required>
             </div>
 
             <div class="input-box-form-lastname">
                 <label for="cliente_sobrenome">Sobrenome</label>
-                <input type="text" name="cliente_sobrenome" required>
+                <input type="text" id="cliente_sobrenome" name="cliente_sobrenome" required>
             </div>
                 
             <div class="input-box-form-email">
                 <label for="cliente_email">E-mail</label>
-                <input type="email" name="cliente_email" required>
+                <input type="email" id="cliente_email" name="cliente_email" required>
             </div>
 
             <div class="input-box-form-telefone">
                 <label for="cliente_telefone">Telefone</label>
-                <input type="tel" name="cliente_telefone" required>
+                <input type="tel" id="cliente_telefone" name="cliente_telefone" required>
             </div>
 
             <div class="input-box-form-cpf">
                 <label for="cliente_cpf">CPF</label>
-                <input type="text" name="cliente_cpf" required>
+                <input type="text" id="cliente_cpf" name="cliente_cpf" required>
             </div>
 
             <button class="button-user-form" name="finalizar_submit" id="finalizar_submit">Finalizar</button>
-            <p class="text-form">* Ao finalizar sua reserva, os dados serão encaminhados para um de nossos atendentes via whatsapp e um <strong>voucher</strong> enviado ao seu email.</p>
-            <p class="text-form-2">* O pagamento da reserva será realizado no momento da retirada do veículo.</p>
+            <span class="text-form">* Ao finalizar sua reserva, os dados serão encaminhados para um de nossos atendentes via whatsapp e um <strong>voucher</strong> enviado ao seu email.</span>
+            <span class="text-form-2">* O pagamento da reserva será realizado no momento da retirada do veículo.</span>
         </form>
     </section>
 
@@ -216,7 +228,7 @@ if (isset($_POST['finalizar_submit'])) {
                 <h4>Total previsto</h4>
                 <p class="descricao">
                     <?php
-                        echo '<strong class="total-price">R$ ' . $preco_total . '</strong>';
+                        echo '<strong class="total-price">R$ ' . $preco_total_formatado . '</strong>';
                         echo '<br>em até 6x sem juros';
                     ?>
                 </p>
@@ -229,3 +241,64 @@ if (isset($_POST['finalizar_submit'])) {
         </div>
     </aside>
 </div>
+
+<div id="dialog" class="dialog">
+    <div class="dialog-content">
+        <p class="dialog-title">Atenção</p>
+        <p id="dialog-message" class="dialog-message"></p>
+        <button id="dialog-close" class="dialog-close">Fechar</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById('finalizar_submit').addEventListener('click', function(event) {
+        let nome = document.querySelector('input[name="cliente_nome"]').value;
+        let sobrenome = document.querySelector('input[name="cliente_sobrenome"]').value;
+        let email = document.querySelector('input[name="cliente_email"]').value;
+        let cpf = document.querySelector('input[name="cliente_cpf"]').value;
+        let telefone = document.querySelector('input[name="cliente_telefone"]').value;
+
+        if (nome === '' || sobrenome === '' || email === '' || cpf === '' || telefone === '') {
+            showDialog('Todos os campos são obrigatórios!');
+            event.preventDefault();
+        } else if (!validateEmail(email)) {
+            showDialog('Email inválido! Digite um email válido.');
+            event.preventDefault();
+        } else if (!validaCPF(cpf)) {
+            showDialog('CPF inválido! Digite um CPF válido.');
+            event.preventDefault();
+        }
+
+        return true;
+    });
+
+    document.getElementById('dialog-close').addEventListener('click', function() {
+        document.getElementById('dialog').style.display = 'none';
+    });
+
+    function showDialog(message) {
+        document.getElementById('dialog-message').textContent = message;
+        document.getElementById('dialog').style.display = 'block';
+    }
+
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    function validaCPF(cpf) {
+        cpf = cpf.replace(/\D/g, '');
+        if (cpf.toString().length != 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+        var result = true;
+        [9, 10].forEach(function(j) {
+            var soma = 0, r;
+            cpf.split(/(?=)/).splice(0,j).forEach(function(e, i) {
+                soma += parseInt(e) * ((j+2)-(i+1));
+            });
+            r = soma % 11;
+            r = (r <2)?0:11-r;
+            if(r != cpf.substring(j, j+1)) result = false;
+        });
+        return result;
+    }
+</script>
