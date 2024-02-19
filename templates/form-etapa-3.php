@@ -38,7 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['etapa_3_submit'])) {
 ?>
 
 <div class="menu">
-    <a class="link" href="<?php echo site_url('/'); ?>">Home</a>
+    <a class="link" href="<?php echo site_url('/'); ?>">Home</a>/
+    <a class="link" href="#">Reservas Online</a>
 </div>
 
 <div class="timeline">
@@ -46,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['etapa_3_submit'])) {
         <div class="step" id="step1"><a class="link" href="<?php echo site_url('/'); ?>">Local, Data e Hora</a></div>
         <div class="step" id="step2"><a class="link" href="<?php echo site_url('/etapa2'); ?>">Grupos de Carros</a></div>
         <div class="step active" id="step3"><a class="link" href="<?php echo site_url('/etapa3'); ?>">Adicionais e Acessórios</a></div>
-        <div class="step" id="step4"><p>Dados Cadastrais</p></div>
+        <div class="step" id="step4"><p>Finalizar Reserva</p></div>
     </div>
 </div>
 

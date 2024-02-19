@@ -21,10 +21,15 @@
     padding: 10px;
     background-color: #f8f9fa;
     border-bottom: 1px solid #ddd;
+}
 
-    span {
-        font-size: 1rem;
-    }
+.menu a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #444;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
 }
 
 .link {
