@@ -84,15 +84,30 @@ if (isset($_POST['finalizar_submit'])) {
             
     $mensagem .= "\nItens adicionados\n\n";
 
-    foreach ($data_etapa_3 as $item_nome => $item_valor) {
-        if ($item_valor > 0) {
-            $mensagem .= "- " . $item_nome . ": R$ " . $item_valor . " / dia\n";
+    foreach ($data_etapa_3 as $item_nome => $item_data) {
+        if ($item_data['price'] > 0) {
+            $mensagem .= "- " . $item_nome . ": R$ " . $item_data['price'] . " / dia\n";
         }
     }
 
-    $mensagem .= "\nQTotal de diárias: " . calcular_quantidade_dias($data_etapa_1['data_retirada'], $data_etapa_1['data_devolucao']) . "\n";
+    $mensagem .= "\nTotal de diárias: " . calcular_quantidade_dias($data_etapa_1['data_retirada'], $data_etapa_1['data_devolucao']) . "\n";
     $mensagem .= "\nTotal previsto: R$ " . $preco_total_formatado . "\n";
     $mensagem = urlencode($mensagem);
+
+    // Define the subject of the email
+    $assunto = "Detalhes da sua reserva";
+
+    // Define the headers for the email
+    $headers = 'From: cyberrminfo@gmail.com' . "\r\n" .
+        'Reply-To: cyberrminfo@gmail.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
+    // Send the email to the user
+    mail($email, $assunto, $mensagem, $headers);
+
+    // Send the email to the company
+    mail('cyberrminfo@gmail.com', $assunto, $mensagem, $headers);
+
 
     // Redirecionar para a URL do WhatsApp
     header('Location: https://wa.me/73999695380?text=' . $mensagem);
@@ -101,7 +116,8 @@ if (isset($_POST['finalizar_submit'])) {
 ?>
 
 <div class="menu">
-    <a class="link" href="<?php echo site_url('/'); ?>">Home</a>
+    <a class="link" href="<?php echo site_url('/'); ?>">Home</a>/
+    <a class="link" href="#">Reservas Online</a>
 </div>
 
 <div class="timeline">
@@ -109,7 +125,7 @@ if (isset($_POST['finalizar_submit'])) {
         <div class="step" id="step1"><a class="link" href="<?php echo site_url('/'); ?>">Local, Data e Hora</a></div>
         <div class="step" id="step2"><a class="link" href="<?php echo site_url('/etapa2'); ?>">Grupos de Carros</a></div>
         <div class="step" id="step3"><a class="link" href="<?php echo site_url('/etapa3'); ?>">Adicionais e Acessórios</a></div>
-        <div class="step active" id="step4"><a class="link" href="<?php echo site_url('/etapa4'); ?>">Dados Cadastrais</a></div>
+        <div class="step active" id="step4"><a class="link" href="<?php echo site_url('/etapa4'); ?>">Finalizar Reserva</a></div>
     </div>
 </div>
 
@@ -149,16 +165,26 @@ if (isset($_POST['finalizar_submit'])) {
                 <textarea id="observacao" name="observacao" rows="6"></textarea>
             </div>
 
+            <div class="payment">
+                <h2 class="title-payment">Pagamento</h2>
+                <p>Seu pagamento será realizado no momento da retirada do veículo.</p>
+                
+                <div class="checkbox-termos">
+                    <div>
+                        <input type="checkbox" id="aceito_termos" name="aceito_termos" required>
+                        <label for="aceito_termos">Li e aceito os <a href="#">termos e condições</a> da reserva.</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="aceito_politica" name="aceito_politica" required>
+                        <label for="aceito_politica">Declaro ter conhecimento que é necessária a apresentação do mesmo cartão de crédito usado nesta transação na retirada do veículo, sob pena de cancelamento da reserva. A caução poderá ser realizada em outro cartão de crédito, desde que seja do mesmo titular da reserva e do cartão utilizado para o pré-Pagamento.</label>
+                    </div>
+                </div>
+
+                <p class="text-form">Ao clicar em "Finalizar Reserva", você será redirecionado para o WhatsApp para confirmar sua reserva.</p>
+            </div>
+
             <div class="button-submit">
                 <button class="button-user-form" name="finalizar_submit" id="finalizar_submit">Finalizar Reserva</button>
-            </div>
-            <div class="box-infos">
-                <ul>
-                    <li><span class="text-form">Ao finalizar sua reserva, os dados serão encaminhados para um de nossos atendentes via whatsapp e um <strong>voucher</strong> enviado ao seu email.</span></li>
-                    <li><span class="text-form-2">O pagamento da reserva será realizado no momento da retirada do veículo.</span></li>
-                    <li><span class="text-form-2">Sua reserva garante um dos modelos de carro do grupo escolhido, estando sujeito à disponibilidade da locadora.</span></li>
-                    <li><span class="text-form-2">A pré-autorização é uma transação de reserva (caução) realizada no seu cartão de crédito físico, nominal, no momento da retirada do veículo. Se não houver débitos pendentes ao final da locação, solicitamos o desbloqueio do valor.</span></li>
-                </ul>
             </div>
         </form>
     </section>
@@ -253,12 +279,7 @@ if (isset($_POST['finalizar_submit'])) {
                         echo '<br>em até 6x sem juros';
                     ?>
                 </p>
-                <p class="info-payment">*O pagamento da reserva será realizado no momento da retirada do veículo.</p>
             </div>
-        </div>
-        <div class="info-pre-autorizacao">
-            <span>Pré-autorização no cartão</span>
-            <p>A pré-autorização é uma transação de reserva (caução) realizada no seu cartão de crédito físico, nominal, no momento da retirada do veículo. Se não houver débitos pendentes ao final da locação, solicitamos o desbloqueio do valor.</p>
         </div>
     </aside>
 </div>
