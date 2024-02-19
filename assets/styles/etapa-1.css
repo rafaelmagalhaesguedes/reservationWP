@@ -16,6 +16,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 5px;
     padding: 10px 30px;
 }
 
@@ -53,7 +54,7 @@
 }
 
 .select-location {
-    width: 320px;
+    width: 300px;
     height: 43px;
     padding: 9px 0 9px 10px;
     border-radius: 10px;
@@ -139,18 +140,20 @@ option {
     gap: 20px;
 }
 
-.button-continue-form-1 {
+.button-form {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+}
+
+.button-form input {
+    width: 100%;
     padding: 10px 15px;
     background-color: rgb(144, 231, 13);
     color: blue;
     border: none;
     cursor: pointer;
     border-radius: 6px;
-    margin: 0 10px 0 0;
+    margin-bottom: 1px;
     font-size: 1rem;
     font-weight: 500;
 }
@@ -180,13 +183,17 @@ option {
         justify-content: center;
         align-items: center;
         padding: 0;
+        margin: 0;
     }
 
     .wrapper-form-etapa-1 {
         width: 100%;
-        border-radius: 6px;
         display: flex;
         flex-direction: column;
+        border-radius: 0;
+        margin-bottom: 30px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
 
     label {
@@ -241,7 +248,11 @@ option {
         width: 100%;
     }
 
-    .button-continue-form-1 {
+    .button-form {
+        width: 100%;
+    }
+
+    .button-form input {
         width: 100%;
     }
 }

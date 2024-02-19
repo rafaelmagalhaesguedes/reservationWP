@@ -60,14 +60,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['etapa_1_submit'])) {
                     </div>
                         
                     <div class="data_hora">
-                            <label>Data de Devolução</label>
+                        <label>Data de Devolução</label>
                         <div class="input-date-time">
                             <input type="date" class="date-retirada" name="data_devolucao" id="data_devolucao" required />
                             <select class="time" name="hora_devolucao" id="hora_devolucao" required></select>
                         </div>
                     </div>
 
-                    <input class="button-continue-form-1" type="submit" name="etapa_1_submit" value="Continuar">
+                    <div class="button-form">
+                        <input type="submit" name="etapa_1_submit" value="Continuar" />
+                    </div>
                 </div>
             </div>
         </form>
