@@ -25,14 +25,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['etapa_2_submit'])) {
 
 <div class="container-etapa-2">
     <div class="menu">
-        <a class="link" href="<?php echo site_url('/'); ?>">Home</a>
+        <a class="link" href="<?php echo site_url('/'); ?>">Home</a>/
+        <a class="link" href="#">Reservas Online</a>
     </div>
     <div class="timeline">
         <div class="timeline-wrapper">
             <div class="step" id="step1"><a class="link" href="<?php echo site_url('/'); ?>">Local, Data e Hora</a></div>
             <div class="step active" id="step2"><a class="link" href="<?php echo site_url('/etapa2'); ?>">Grupos de Carros</a></div>
             <div class="step" id="step3"><p>Adicionais e Acessórios</p></div>
-            <div class="step" id="step4"><p>Dados Cadastrais</p></div>
+            <div class="step" id="step4"><p>Finalizar Reserva</p></div>
         </div>
     </div>
     <h2 class="titulo-etapa-2">Escolha o grupo de carros</h2>
