@@ -26,38 +26,38 @@ require_once plugin_dir_path(__FILE__) . 'includes/activation.php';
 register_activation_hook(__FILE__, 'reserva_veiculos_activation');
 
 // Shortcode step 1
-function reserva_veiculos_form_etapa_1_shortcode()
+function vehicles_reservation_step_1()
 {
     ob_start();
-    include(plugin_dir_path(__FILE__) . 'templates/form-etapa-1.php');
+    include(plugin_dir_path(__FILE__) . 'templates/form-step-1.php');
     return ob_get_clean();
 }
-add_shortcode('reserva_veiculos_form_etapa_1', 'reserva_veiculos_form_etapa_1_shortcode');
+add_shortcode('step_1', 'vehicles_reservation_step_1');
 
 // Shortcode step 2
-function reserva_veiculos_form_etapa_2_shortcode()
+function vehicles_reservation_step_2()
 {
     ob_start();
-    include(plugin_dir_path(__FILE__) . 'templates/form-etapa-2.php');
+    include(plugin_dir_path(__FILE__) . 'templates/form-step-2.php');
     return ob_get_clean();
 }
-add_shortcode('reserva_veiculos_form_etapa_2', 'reserva_veiculos_form_etapa_2_shortcode');
+add_shortcode('step_2', 'vehicles_reservation_step_2');
 
 // Shortcode step 3
-function reserva_veiculos_form_etapa_3_shortcode()
+function vehicles_reservation_step_3()
 {
     ob_start();
-    include(plugin_dir_path(__FILE__) . 'templates/form-etapa-3.php');
+    include(plugin_dir_path(__FILE__) . 'templates/form-step-3.php');
     return ob_get_clean();
 }
-add_shortcode('reserva_veiculos_form_etapa_3', 'reserva_veiculos_form_etapa_3_shortcode');
+add_shortcode('step_3', 'vehicles_reservation_step_3');
 
 // Shortcode step 4
-function reserva_veiculos_form_etapa_4_shortcode()
+function vehicles_reservation_step_4()
 {
     ob_start();
-    include(plugin_dir_path(__FILE__) . 'templates/form-etapa-4.php');
+    include(plugin_dir_path(__FILE__) . 'templates/form-step-4.php');
     return ob_get_clean();
 }
-add_shortcode('reserva_veiculos_form_etapa_4', 'reserva_veiculos_form_etapa_4_shortcode');
+add_shortcode('step_4', 'vehicles_reservation_step_4');
 ?>
